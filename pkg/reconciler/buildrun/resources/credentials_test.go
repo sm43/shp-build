@@ -44,7 +44,7 @@ var _ = Describe("Credentials", func() {
 							Name: "secret_a",
 						},
 					},
-					Builder: &buildv1alpha1.Image{
+					Builder: &buildv1alpha1.BuilderImage{
 						Image: "quay.io/namespace/image",
 						Credentials: &corev1.LocalObjectReference{
 							Name: "secret_docker.io",

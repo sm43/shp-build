@@ -91,7 +91,7 @@ type BuildSpec struct {
 	// the source code would be built.
 	//
 	// +optional
-	Builder *Image `json:"builder,omitempty"`
+	Builder *BuilderImage `json:"builder,omitempty"`
 
 	// Dockerfile is the path to the Dockerfile to be used for
 	// build strategies which bank on the Dockerfile for building
@@ -153,6 +153,18 @@ type Image struct {
 	//
 	// +optional
 	Labels map[string]string `json:"labels,omitempty"`
+}
+
+// BuilderImage refers to an container image with credentials
+type BuilderImage struct {
+	// Image is the reference of the image.
+	Image string `json:"image"`
+
+	// Credentials references a Secret that contains credentials to access
+	// the image registry.
+	//
+	// +optional
+	Credentials *corev1.LocalObjectReference `json:"credentials,omitempty"`
 }
 
 // BuildStatus defines the observed state of Build

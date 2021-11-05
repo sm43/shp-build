@@ -130,7 +130,7 @@ var _ = Describe("Reconcile Build", func() {
 
 		Context("when builder image secret is specified", func() {
 			It("fails when the secret does not exist", func() {
-				buildSample.Spec.Builder = &build.Image{
+				buildSample.Spec.Builder = &build.BuilderImage{
 					Image: "busybox",
 					Credentials: &corev1.LocalObjectReference{
 						Name: "non-existing",
@@ -147,7 +147,7 @@ var _ = Describe("Reconcile Build", func() {
 			})
 
 			It("succeeds when the secret exists", func() {
-				buildSample.Spec.Builder = &build.Image{
+				buildSample.Spec.Builder = &build.BuilderImage{
 					Image: "busybox",
 					Credentials: &corev1.LocalObjectReference{
 						Name: "existing",
